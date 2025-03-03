@@ -1,9 +1,9 @@
-import {connection} from '../connection/connection.js';
+import { connection } from '../connection/connection.js';
 
 export const getUsers = (req, res) => {
-    const query = 'SELECT * FROM users';
+    const q = 'SELECT * FROM users';
 
-    connection.query(query, (error, data) => {
+    connection.query(q, (error, data) => {
         if(error){
             return res.json(error);
         }
