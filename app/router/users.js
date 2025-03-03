@@ -1,4 +1,5 @@
 const express = require('express');
+import { getUsers } from '../model/users';
 
 const router = express.Router();
 

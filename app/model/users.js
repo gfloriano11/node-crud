@@ -1,4 +1,4 @@
-import connection from '../connection/connection.js';
+import {connection} from '../connection/connection.js';
 
 export const getUsers = (req, res) => {
     const query = 'SELECT * FROM users';
