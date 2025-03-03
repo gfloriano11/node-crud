@@ -19,3 +19,5 @@ connection.connect(error => {
         return;
     }
 })
+
+app.listen(8000)
