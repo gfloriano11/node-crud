@@ -11,4 +11,6 @@ app.use(cors());
 app.get('/', router);
 app.use('/users', userRouter);
 
-app.listen(8000);
+app.listen(8000, () => {
+    console.log('server running at http://localhost:8000')
+});
