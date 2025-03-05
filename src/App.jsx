@@ -1,8 +1,8 @@
 function App() {
 
   return (
-    <div className="bg-neutral-800 w-dvw h-dvh flex justify-center items-center">
-      <h1>Create your user:</h1>
+    <div className="bg-gray-100 w-dvw h-dvh flex justify-center items-start pt-4">
+      <h1 className="text-black font-normal font-inter text-3xl">Create Your User:</h1>
     </div>
   )
 }
