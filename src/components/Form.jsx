@@ -1,10 +1,17 @@
+import { useState } from "react"
+import Input from './Input.jsx';
+
 function Form(){
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+
     return(
         <form>
-            <div className="flex flex-col justify-center">
+            <div className="flex justify-center">
                 <div className="">
                     <label>Name:</label>
-                    <input type="text"></input>
+                    <Input></Input>
                 </div>
                 <div>
                     <label>E-mail:</label>
