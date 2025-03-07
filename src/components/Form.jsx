@@ -5,25 +5,27 @@ function Form(){
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [number, setNumber] = useState('');
+    const [date, setDate] = useState('');
 
     return(
         <form>
-            <div className="flex justify-center">
-                <div className="">
+            <div className="lg:w-4xl flex justify-center">
+                <div className="flex flex-col">
                     <label>Name:</label>
-                    <Input></Input>
+                    <Input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
                 </div>
-                <div>
+                <div className="flex flex-col">
                     <label>E-mail:</label>
-                    <input type="email"></input>
+                    <Input type="e-mail" value={email} onChange={(event) => setEmail(event.target.value)}/>
                 </div>
-                <div>
+                <div className="flex flex-col">
                     <label>Phone Number:</label>
-                    <input type="text"></input>
+                    <Input type="text" value={number} onChange={(event) => setNumber(event.target.value)}/>
                 </div>
-                <div>
+                <div className="flex flex-col">
                     <label>Birthdate:</label>
-                    <input type="date"></input>
+                    <Input type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
                 </div>
             </div>
         </form>
