@@ -10,7 +10,7 @@ function Form(){
 
     return(
         <form>
-            <div className="lg:w-4xl md:flex-row min-w-30 flex flex-col justify-center items-center gap-4">
+            <div className="lg:w-4xl md:flex-row min-w-30 flex flex-col justify-center items-center md:gap-3.5 gap-1.5">
                 <div className="md:items-start flex flex-col justify-center items-center">
                     <label>Name:</label>
                     <Input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
