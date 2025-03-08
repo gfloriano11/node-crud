@@ -10,7 +10,7 @@ function Form(){
 
     return(
         <form>
-            <div className="lg:w-4xl md:flex-row min-w-30 flex flex-col justify-center items-center">
+            <div className="lg:w-4xl md:flex-row min-w-30 flex flex-col justify-center items-center gap-4">
                 <div className="md:items-start flex flex-col justify-center items-center">
                     <label>Name:</label>
                     <Input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
@@ -25,7 +25,8 @@ function Form(){
                 </div>
                 <div className="md:items-start flex flex-col justify-center items-center">
                     <label>Birthdate:</label>
-                    <Input type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+                    <Input className="lg:w-48 md:w-38 w-47.5 bg-white p-1 border-1 border-gray-400 rounded-md focus:outline-none"
+                     type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
                 </div>
             </div>
         </form>
