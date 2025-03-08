@@ -31,7 +31,7 @@ function Form(){
                      type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
                 </div>
                 <div className="w-full md:flex md:align-bottom">
-                    <button className="md:w-20 md:h-8.5 w-full flex flex-col justify-center items-center bg-blue-500 p-2 rounded-lg">
+                    <button className="md:w-20 md:h-8.5 w-full flex flex-col justify-center items-center bg-blue-500 p-2 rounded-lg cursor-pointer">
                         <p className="text-white font-inter">Criar</p>
                     </button>
                 </div>
