@@ -10,20 +10,20 @@ function Form(){
 
     return(
         <form>
-            <div className="lg:w-4xl flex justify-center">
-                <div className="flex flex-col">
+            <div className="lg:w-4xl md:flex-row min-w-30 flex flex-col justify-center items-center">
+                <div className="md:items-start flex flex-col justify-center items-center">
                     <label>Name:</label>
                     <Input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
                 </div>
-                <div className="flex flex-col">
+                <div className="md:items-start flex flex-col justify-center items-center">
                     <label>E-mail:</label>
                     <Input type="e-mail" value={email} onChange={(event) => setEmail(event.target.value)}/>
                 </div>
-                <div className="flex flex-col">
+                <div className="md:items-start flex flex-col justify-center items-center">
                     <label>Phone Number:</label>
                     <Input type="text" value={number} onChange={(event) => setNumber(event.target.value)}/>
                 </div>
-                <div className="flex flex-col">
+                <div className="md:items-start flex flex-col justify-center items-center">
                     <label>Birthdate:</label>
                     <Input type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
                 </div>
