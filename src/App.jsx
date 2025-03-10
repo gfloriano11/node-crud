@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Form from './components/Form.jsx';
 import Users from './components/Users.jsx';
 
 function App() {
+
+  const [users, setUsers] = useState([]);
+  const [edit, onEdit] = useState(null);
 
   useEffect(() => {
 
@@ -28,7 +31,7 @@ function App() {
         <Form></Form>
       </div>
       <div>
-        <Users></Users>
+        <Users users={users}></Users>
       </div>
     </div>
   )
