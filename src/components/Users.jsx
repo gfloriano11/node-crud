@@ -1,14 +1,14 @@
 function Users({users}){
     return (
-        <div className="bg-gray-100 grid md:grid-cols-3 grid-cols-2 gap-4
-        min-w-56.5 border-gray-400 border-2 rounded-2xl pt-2 p-4 shadow-2xl shadow-gray-400
+        <div className="bg-gray-100 md:grid md:grid-cols-3 flex
+        min-w-56.5 border-gray-400 border-2 rounded-2xl pt-2 p-3 shadow-2xl shadow-gray-400
         md:w-3xl w-full">
-            <div>
+            <div className="w-28">
                 <p className="inline md:text-xl text-lg">Name</p>
-                <div>
+                <div className="">
                     {users.map((user) => (
                         <div key={user.id}>
-                            <p>{user.full_name}</p>
+                            <p className="break-words text-sm">{user.full_name}</p>
                         </div>
                     ))}
                 </div>
@@ -18,7 +18,7 @@ function Users({users}){
                 <div>
                     {users.map((user) => (
                         <div key={user.id}>
-                            <p>{user.email}</p>
+                            <p className="break-words text-sm">{user.email}</p>
                         </div>
                     ))}
                 </div>
@@ -28,7 +28,7 @@ function Users({users}){
                 <div>
                     {users.map((user) => (
                         <div key={user.id}>
-                            <p>{user.phone_number}</p>
+                            <p className="break-words text-sm">{user.phone_number}</p>
                         </div>
                     ))}
                 </div>
