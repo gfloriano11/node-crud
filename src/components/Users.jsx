@@ -6,8 +6,8 @@ function Users({users}){
             <div>
                 <p className="inline md:text-xl text-lg">Name</p>
                 <div>
-                    {users.map((user, id) => (
-                        <div key={id}>
+                    {users.map((user) => (
+                        <div key={user.id}>
                             <p>{user.full_name}</p>
                         </div>
                     ))}
@@ -16,8 +16,8 @@ function Users({users}){
             <div>
                 <p className="inline md:text-xl text-lg">E-mail</p>
                 <div>
-                    {users.map((user, id) => (
-                        <div key={id}>
+                    {users.map((user) => (
+                        <div key={user.id}>
                             <p>{user.email}</p>
                         </div>
                     ))}
@@ -26,8 +26,8 @@ function Users({users}){
             <div className="hidden md:block">
                 <p className="inline md:text-xl text-lg">Phone Number</p>
                 <div>
-                    {users.map((user, id) => (
-                        <div key={id}>
+                    {users.map((user) => (
+                        <div key={user.id}>
                             <p>{user.phone_number}</p>
                         </div>
                     ))}
