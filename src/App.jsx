@@ -11,18 +11,28 @@ function App() {
 
     async function getUsers(){
 
-      const response = await fetch('http://localhost:8000/users', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+      try{
+        
+        const response = await fetch('http://localhost:8000/users', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if(!response.ok){
+          throw new Error('Error to get users');
         }
-      })
-      const data = await response.json()
-      console.log(data)
+
+        const data = await response.json();
+        setUsers(data);
+      } catch{
+        console.log('Error to get users: ', error);
+      }
     }
 
     getUsers();
-  }, [setUsers]);
+  }, []);
 
   return (
     <div className="bg-gray-100 w-dvw h-dvh flex flex-col justify-start items-center pt-4 gap-2">
