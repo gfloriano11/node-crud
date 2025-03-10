@@ -12,7 +12,6 @@ function App() {
     async function getUsers(){
 
       try{
-        
         const response = await fetch('http://localhost:8000/users', {
           method: 'GET',
           headers: {
