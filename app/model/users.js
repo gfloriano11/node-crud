@@ -10,3 +10,7 @@ export const getUsers = (req, res) => {
         return res.status(200).json(data);
     })
 }
+
+export const createUser = (req, res) => {
+    const q = 'INSERT INTO users SET ?';
+}
