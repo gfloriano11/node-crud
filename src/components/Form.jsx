@@ -9,7 +9,7 @@ function Form(){
     const [date, setDate] = useState('');
 
     return(
-        <form>
+        <form method="POST" action="http://localhost:8000/users/create">
             <div className="bg-gray-100 md:flex-row md:items-end 
             min-w-30 flex flex-col justify-center items-center 
             md:gap-3.5 gap-1.5 border-gray-400 border-2 rounded-2xl pt-2 p-4 shadow-2xl shadow-gray-400">
