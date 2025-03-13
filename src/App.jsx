@@ -7,30 +7,31 @@ function App() {
   const [users, setUsers] = useState([]);
   const [edit, onEdit] = useState(null);
 
+  async function getUsers(){
+
+    try{
+      const response = await fetch('http://localhost:8000/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if(!response.ok){
+        throw new Error('Error to get users');
+      }
+
+      const data = await response.json();
+      setUsers(data);
+    } catch{
+      console.log('Error to get users: ', error);
+    }
+  }
+
   useEffect(() => {
 
-    async function getUsers(){
-
-      try{
-        const response = await fetch('http://localhost:8000/users', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-
-        if(!response.ok){
-          throw new Error('Error to get users');
-        }
-
-        const data = await response.json();
-        setUsers(data);
-      } catch{
-        console.log('Error to get users: ', error);
-      }
-    }
-
     getUsers();
+
   }, []);
 
   return (
