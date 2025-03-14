@@ -41,7 +41,7 @@ function App() {
         <Form></Form>
       </div>
       <div>
-        <Users users={users}></Users>
+        <Users users={users} setUsers={setUsers}></Users>
       </div>
     </div>
   )
