@@ -1,6 +1,6 @@
 import { Pen, Trash2 } from "lucide-react";
 
-function Users({users, setUsers}){
+function Users({users, setUsers, onEdit}){
 
     async function handleEdit(id){
         
