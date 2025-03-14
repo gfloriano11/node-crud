@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import Input from './Input.jsx';
 
-function Form({edit, onEdit}){
+function Form({edit, onEdit, getUsers}){
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ function Form({edit, onEdit}){
 
         const user = ref.current;
 
-        if(!user.full_name.value || !user.email.value || !user.phone_number.value || !user.birthdate.value){
+        if(!user.full_name.value || !user.email.value || !user.number.value || !user.birthdate.value){
             alert('Fill in all fields');
             return;
         }
@@ -29,16 +29,38 @@ function Form({edit, onEdit}){
                 body: JSON.stringify({
                     name: user.full_name.value,
                     email: user.email.value,
-                    number: user.phone_number.value,
+                    number: user.number.value,
                     date: user.birthdate.value
                 })
                 
             })
+
+        } else {
+            const response = await fetch('http://localhost:8000/users/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: user.full_name.value,
+                    email: user.email.value,
+                    number: user.number.value,
+                    date: user.birthdate.value
+                })
+            });
         }
+
+        user.full_name.value = '';
+        user.email.value = '';
+        user.number.value = '';
+        user.birthdate.value = '';
+
+        onEdit(null);
+        getUsers();
     }
 
     return(
-        <form method="POST" action="http://localhost:8000/users/create" ref={ref} onSubmit={handleSubmit}> 
+        <form ref={ref} onSubmit={handleSubmit}> 
             <div className="bg-gray-100 md:flex-row md:items-end 
             min-w-30 flex flex-col justify-center items-center 
             md:gap-3.5 gap-1.5 border-gray-400 border-2 rounded-2xl pt-2 p-4 shadow-2xl shadow-gray-400">

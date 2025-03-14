@@ -12,7 +12,8 @@ export const getUsers = (req, res) => {
 }
 
 export const createUser = (req, res) => {
-    const query = 'INSERT INTO users (full_name, email, phone_number, birthdate) VALUES (?)';
+    
+    const query = 'INSERT INTO users (full_name, email, phone_number, birthdate) VALUES (?, ?, ?, ?)';
 
     const values = [
         req.body.name,
