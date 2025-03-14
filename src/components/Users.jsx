@@ -35,10 +35,10 @@ function Users({users}){
                     ))}
                 </div>
             </div>
-            <div className="flex flex-row justify-center items-center">
-                <div className="flex flex-row w-full justify-center">
+            <div className="flex justify-center items-end">
+                <div className="w-full justify-center">
                     {users.map((user) => (
-                        <div key={user.id} className="flex w-1/2 justify-between">
+                        <div key={user.id} className="flex w-1/2 justify-between items-center">
                             <a>
                                 <Pen className="cursor-pointer"/>
                             </a>
