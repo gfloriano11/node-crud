@@ -1,6 +1,24 @@
 import { Pen, Trash2 } from "lucide-react";
 
-function Users({users}){
+function Users({users, setUsers}){
+
+    async function handleEdit(id){
+        
+        const response = await fetch(`http://localhost:8000/users/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if(!response.ok){
+            throw new Error('Error to edit user');
+        }
+
+        const newUsers = users.filter((user) => user.id !== id);
+        setUsers(newUsers);
+    }
+
     return (
         <div className="bg-gray-100 md:grid md:grid-cols-4 flex
         min-w-56.5 border-gray-400 border-2 rounded-2xl pt-2 p-3 shadow-2xl shadow-gray-400
@@ -39,12 +57,10 @@ function Users({users}){
                 <div className="w-full justify-center">
                     {users.map((user) => (
                         <div key={user.id} className="flex w-1/2 justify-between items-center">
-                            <a>
-                                <Pen className="cursor-pointer"/>
-                            </a>
-                            <a>
-                                <Trash2 className="cursor-pointer"/>
-                            </a>
+                            <Pen className="cursor-pointer"
+                            onClick={() => handleEdit(user.id)}/>
+                            <Trash2 className="cursor-pointer"
+                            onClick={() => handleDelete(user.id)}/>
                         </div>
                     ))}
                 </div>
