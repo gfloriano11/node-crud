@@ -1,15 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Input from './Input.jsx';
 
-function Form(){
+function Form({edit, onEdit, getUsers}){
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [number, setNumber] = useState('');
     const [date, setDate] = useState('');
 
+    useEffect(() => {
+        if(onEdit){
+            const user = ref.current;
+
+            user.full_name.value = edit.full_name;
+            user.email.value = edit.email;
+            user.phone_number.value = edit.phone_number;
+            user.birthdate.value = edit.birthdate;
+        }
+    });
+
     return(
-        <form method="POST" action="http://localhost:8000/users/create">
+        <form method="POST" action="http://localhost:8000/users/create" ref={ref}>
             <div className="bg-gray-100 md:flex-row md:items-end 
             min-w-30 flex flex-col justify-center items-center 
             md:gap-3.5 gap-1.5 border-gray-400 border-2 rounded-2xl pt-2 p-4 shadow-2xl shadow-gray-400">
