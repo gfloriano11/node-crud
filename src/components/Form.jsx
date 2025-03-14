@@ -1,26 +1,44 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Input from './Input.jsx';
 
-function Form({edit, onEdit, getUsers}){
+function Form({edit, onEdit}){
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [number, setNumber] = useState('');
     const [date, setDate] = useState('');
 
-    useEffect(() => {
-        if(onEdit){
-            const user = ref.current;
+    const ref = useRef();
 
-            user.full_name.value = edit.full_name;
-            user.email.value = edit.email;
-            user.phone_number.value = edit.phone_number;
-            user.birthdate.value = edit.birthdate;
+    async function handleSubmit(submit){
+        submit.preventDefault();
+
+        const user = ref.current;
+
+        if(!user.full_name.value || !user.email.value || !user.phone_number.value || !user.birthdate.value){
+            alert('Fill in all fields');
+            return;
         }
-    });
+
+        if(onEdit){
+            const response = await fetch(`http://localhost:8000/users/${edit.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: user.full_name.value,
+                    email: user.email.value,
+                    number: user.phone_number.value,
+                    date: user.birthdate.value
+                })
+                
+            })
+        }
+    }
 
     return(
-        <form method="POST" action="http://localhost:8000/users/create" ref={ref}>
+        <form method="POST" action="http://localhost:8000/users/create" ref={ref} onSubmit={handleSubmit}> 
             <div className="bg-gray-100 md:flex-row md:items-end 
             min-w-30 flex flex-col justify-center items-center 
             md:gap-3.5 gap-1.5 border-gray-400 border-2 rounded-2xl pt-2 p-4 shadow-2xl shadow-gray-400">
