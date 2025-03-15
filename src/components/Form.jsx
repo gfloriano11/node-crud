@@ -10,12 +10,23 @@ function Form({edit, onEdit, getUsers}){
 
     const ref = useRef();
 
+    useEffect(() => {
+        if (onEdit) {
+          const user = ref.current;
+    
+          user.name.value = onEdit.name;
+          user.email.value = onEdit.email;
+          user.number.value = onEdit.number;
+          user.birthdate.value = onEdit.birthdate;
+        }
+      }, [onEdit]);
+
     async function handleSubmit(submit){
         submit.preventDefault();
 
         const user = ref.current;
 
-        if(!user.full_name.value || !user.email.value || !user.number.value || !user.birthdate.value){
+        if(!user.name.value || !user.email.value || !user.number.value || !user.birthdate.value){
             alert('Fill in all fields');
             return;
         }
@@ -27,7 +38,7 @@ function Form({edit, onEdit, getUsers}){
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: user.full_name.value,
+                    name: user.name.value,
                     email: user.email.value,
                     number: user.number.value,
                     date: user.birthdate.value
@@ -36,13 +47,13 @@ function Form({edit, onEdit, getUsers}){
             })
 
         } else {
-            const response = await fetch('http://localhost:8000/users/create', {
+            const response = await fetch('http://localhost:8000/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: user.full_name.value,
+                    name: user.name.value,
                     email: user.email.value,
                     number: user.number.value,
                     date: user.birthdate.value
@@ -50,10 +61,10 @@ function Form({edit, onEdit, getUsers}){
             });
         }
 
-        user.full_name.value = '';
-        user.email.value = '';
-        user.number.value = '';
-        user.birthdate.value = '';
+        setName('');
+        setEmail('');
+        setNumber('');
+        setDate('');
 
         onEdit(null);
         getUsers();
@@ -65,21 +76,21 @@ function Form({edit, onEdit, getUsers}){
             min-w-30 flex flex-col justify-center items-center 
             md:gap-3.5 gap-1.5 border-gray-400 border-2 rounded-2xl pt-2 p-4 shadow-2xl shadow-gray-400">
                 <div className="md:items-start flex flex-col justify-center items-center">
-                    <label>Name:</label>
-                    <Input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
+                    <label htmlFor="name">Name:</label>
+                    <Input type="text" name="name" value={name} onChange={(event) => setName(event.target.value)}/>
                 </div>
                 <div className="md:items-start flex flex-col justify-center items-center">
-                    <label>E-mail:</label>
-                    <Input type="e-mail" value={email} onChange={(event) => setEmail(event.target.value)}/>
+                    <label htmlFor="email">E-mail:</label>
+                    <Input type="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
                 </div>
                 <div className="md:items-start flex flex-col justify-center items-center">
-                    <label>Phone Number:</label>
-                    <Input type="text" value={number} onChange={(event) => setNumber(event.target.value)}/>
+                    <label htmlFor="number">Phone Number:</label>
+                    <Input type="text" name="number" value={number} onChange={(event) => setNumber(event.target.value)}/>
                 </div>
                 <div className="md:items-start flex flex-col justify-center items-center">
-                    <label>Birthdate:</label>
+                    <label htmlFor="birthdate">Birthdate:</label>
                     <Input className="lg:w-48 md:w-38 w-47.5 bg-white p-1 border-1 border-gray-400 rounded-md focus:outline-none"
-                     type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+                     type="date" name="birthdate" value={date} onChange={(event) => setDate(event.target.value)}/>
                 </div>
                 <div className="w-full md:flex md:align-bottom">
                     <button className="md:w-20 md:h-8.5 w-full flex flex-col justify-center items-center bg-blue-500 p-2 rounded-lg cursor-pointer">
