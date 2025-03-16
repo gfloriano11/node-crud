@@ -32,7 +32,7 @@ function Form({ edit, onEdit, getUsers }) {
             name: user.name.value,
             email: user.email.value,
             number: user.number.value,
-            date: user.birthdate.value
+            birthdate: user.birthdate.value
         };
 
         if (edit && edit.id) {
@@ -55,13 +55,11 @@ function Form({ edit, onEdit, getUsers }) {
             });
         }
 
-        // Limpar os campos
         setName('');
         setEmail('');
         setNumber('');
         setDate('');
 
-        // Limpar a edição
         onEdit(null);
         getUsers();
     }
