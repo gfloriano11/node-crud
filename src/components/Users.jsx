@@ -26,10 +26,10 @@ function Users({users, setUsers, onEdit}){
     }
 
     return (
-        <div className="bg-gray-100 md:grid md:grid-cols-4 flex
-        min-w-56.5 border-gray-400 border-2 rounded-2xl pt-2 p-3 shadow-2xl shadow-gray-400
+        <div className="bg-gray-100 flex md:justify-between
+        min-w-60 border-gray-400 border-2 rounded-2xl pt-2 p-3 shadow-2xl shadow-gray-400
         md:w-3xl w-full">
-            <div className="w-28">
+            <div className="w-fit">
                 <p className="inline md:text-xl text-lg">Name</p>
                 <div className="">
                     {users.map((user) => (
@@ -39,7 +39,7 @@ function Users({users, setUsers, onEdit}){
                     ))}
                 </div>
             </div>
-            <div>
+            <div className="w-fit">
                 <p className="inline md:text-xl text-lg">E-mail</p>
                 <div>
                     {users.map((user) => (
@@ -49,7 +49,7 @@ function Users({users, setUsers, onEdit}){
                     ))}
                 </div>
             </div>
-            <div className="hidden md:block">
+            <div className="hidden md:block w-fit">
                 <p className="inline md:text-xl text-lg">Phone Number</p>
                 <div>
                     {users.map((user) => (
@@ -60,12 +60,12 @@ function Users({users, setUsers, onEdit}){
                 </div>
             </div>
             <div className="flex justify-center items-end">
-                <div className="w-full justify-center">
+                <div className="w-full">
                     {users.map((user) => (
-                        <div key={user.id} className="flex w-1/2 justify-between items-center">
-                            <Pen className="cursor-pointer"
+                        <div key={user.id} className="flex w-1/2 md:justify-between md:items-center">
+                            <Pen className="cursor-pointer md:w-20 w-10"
                             onClick={() => handleEdit(user.id)}/>
-                            <Trash2 className="cursor-pointer"
+                            <Trash2 className="cursor-pointer md:w-20 w-10"
                             onClick={() => handleDelete(user.id)}/>
                         </div>
                     ))}
