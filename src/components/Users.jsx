@@ -5,21 +5,8 @@ function Users({users, setUsers, onEdit}){
     async function handleEdit(id){
 
         const user = users.find((user) => user.id === id);
-        
-        const response = await fetch(`http://localhost:8000/users/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
 
-        if(!response.ok){
-            throw new Error('Error to edit user');
-        }
-
-        const newUsers = users.filter((user) => user.id !== id);
-        setUsers(newUsers);
+        onEdit(user);
     }
 
     async function handleDelete(id){
@@ -34,6 +21,8 @@ function Users({users, setUsers, onEdit}){
         if(!response.ok){
             throw new Error('Error to delete user');
         }
+
+        setUsers(users.filter((user) => user.id !== id));
     }
 
     return (
