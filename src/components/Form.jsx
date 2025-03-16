@@ -11,10 +11,13 @@ function Form({ edit, onEdit, getUsers }) {
 
     useEffect(() => {
         if (edit) {
-            setName(edit.name);
+
+            const formattedDate = new Date(edit.birthdate).toISOString().split('T')[0];
+
+            setName(edit.full_name);
             setEmail(edit.email);
-            setNumber(edit.number);
-            setDate(edit.birthdate);
+            setNumber(edit.phone_number);
+            setDate(formattedDate);
         }
     }, [edit]);
 
