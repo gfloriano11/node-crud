@@ -3,12 +3,15 @@ import { Pen, Trash2 } from "lucide-react";
 function Users({users, setUsers, onEdit}){
 
     async function handleEdit(id){
+
+        const user = users.find((user) => user.id === id);
         
         const response = await fetch(`http://localhost:8000/users/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(user)
         });
 
         if(!response.ok){
@@ -17,6 +20,20 @@ function Users({users, setUsers, onEdit}){
 
         const newUsers = users.filter((user) => user.id !== id);
         setUsers(newUsers);
+    }
+
+    async function handleDelete(id){
+
+        const response = await fetch(`http://localhost:8000/users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if(!response.ok){
+            throw new Error('Error to delete user');
+        }
     }
 
     return (
