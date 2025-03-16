@@ -5,7 +5,7 @@ import Users from './components/Users.jsx';
 function App() {
 
   const [users, setUsers] = useState([]);
-  const [edit, onEdit] = useState(null);
+  const [edit, setOnEdit] = useState(null);
 
   async function getUsers(){
 
@@ -38,10 +38,10 @@ function App() {
     <div className="bg-gray-100 w-dvw h-dvh flex flex-col justify-start items-center pt-4 gap-2">
       <h1 className="text-black font-normal font-inter text-3xl">Create Your User:</h1>
       <div>
-        <Form edit={edit} onEdit={onEdit} getUsers={getUsers}></Form>
+        <Form edit={edit} onEdit={setOnEdit} getUsers={getUsers}></Form>
       </div>
       <div>
-        <Users users={users} setUsers={setUsers} onEdit={onEdit}></Users>
+        <Users users={users} setUsers={setUsers} onEdit={setOnEdit}></Users>
       </div>
     </div>
   )
